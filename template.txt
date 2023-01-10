@@ -1,0 +1,10 @@
+BELOW TEMPLATE FOR CREATING NEW ENTRY IN SWAGGER
+
+{
+    "id":23,
+    "title":'Tshirt',
+    "price":10,
+    "description":"Cotton",
+    "category":"men's clothing",
+    "image":"https://via.placeholder.com/150"
+}

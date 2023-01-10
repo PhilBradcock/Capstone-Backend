@@ -1,0 +1,171 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "My User Project CRUD",
+        "description": "My User Project Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+            }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+        "name": "fakestore",
+        "description": "API for fakestore database in the system"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/fakestore/create": {
+            "post": {
+                "tags": [
+                    "Create new entry"
+                ],
+                "summary": "Creates a new entry in the database",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "fakestore",
+                        "description": "Creates a new entry",
+                        "schema" : {
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "title",
+                                "price",
+                                "description",                                
+                                "category",
+                                "image"
+                            
+                            ],
+                            "properties" : {
+                                    "id":{
+                                        "type": "number"
+                                    } ,
+                                    "title":{
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "description":{
+                                        "type": "string"
+                                    },
+                                    "category" : {
+                                        "type": "string"
+                                    },
+                                    "image":{
+                                        "type": "string"
+                                }
+                            }
+                        }
+                    }
+
+                ]
+            }
+        },
+        "/fakestore/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete Item by Id"
+                ],
+                "summary": "Will delete one entry by Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Will delete one entry based on Id"
+                    }
+                }
+            } 
+        },
+        "/fakestore/update/{id}": {
+            "put": {
+                "tags": [
+                    "Update Pricing"
+                ],
+                "summary": "Updates pricing by id within database",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter required ID of item"
+                    },
+                    {
+                        "in": "body",
+                        "name": "fakestore",
+                        "description": "Pricing",
+                        "schema" : {
+                            "type": "object",
+                            "required": [
+                                "price"
+                               
+                            ],
+                            "properties" : {
+                                
+                                "price" : {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                    ],
+                "responses": {
+                    "200": {
+                        "description": "Updates the price where required"
+                    }
+                }
+            }
+        },
+        "/fakestore/categories": {
+            "get": {
+                "tags": [
+                    "Displays results based on category"
+                ],
+                "summary": "Displays results based on category",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Category"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Displays results based on category"
+                    }
+                }
+            }
+        },
+        "/fakestore/item": {
+            "get": {
+                "tags": [
+                    "Displays item based on Id"
+                ],
+                "summary": "Displays item based on Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Displays item based on Id"
+                    }
+                }
+            }
+        }
+    }
+}
